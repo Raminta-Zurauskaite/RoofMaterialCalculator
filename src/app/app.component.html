@@ -53,8 +53,14 @@
                     <mat-card>
                         <!-- <p> Explanational picture of how rafter length is obtained:</p>
                         <p>run = roof/room width / 2</p>
-                        <p>rafter length^2 = run^2 + rise^2</p> -->
-                        <img src="assets/roofExample.png" />
+                        <p>rafter length^2 = run^2 + rise^2</p> 
+                        <img src="assets/roofExample.png" />-->
+                        <div *ngIf="roofTypeControl.value=='Shed roof'">
+                            <img src="assets/ShedRoofWithEave.png" width="550" />
+                        </div>
+                        <div *ngIf="roofTypeControl.value=='Open gable roof'">
+                            <img src="assets/GableRoofWithEave.png" width="550" />
+                        </div>
                     </mat-card>
 
                 </form>
