@@ -15,6 +15,8 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatOptionModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+
 
 
 
@@ -35,7 +37,8 @@ import { MatInputModule } from '@angular/material/input';
     MatCheckboxModule,
     MatOptionModule,
     MatListModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule,
   ],
   providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }],
   bootstrap: [AppComponent]
