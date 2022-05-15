@@ -36,13 +36,13 @@
                     </mat-select>
                     <mat-label>Roof material type</mat-label>
                 </mat-form-field>
-                <mat-card>Roof surface area: {{roofSurfaceAreaControl.value}} </mat-card>
+                <mat-card>Roof surface area: {{roofSurfaceAreaControl.value}} m&#178;</mat-card>
                 <mat-card>
                     <div *ngIf="roofMaterialTypeControl.value==''">
                         Select roof material type
                     </div>
                     <div *ngIf="roofMaterialTypeControl.value=='Roof tin'">
-                        You will need {{roofSurfaceAreaControl.value}} m*m of tin
+                        You will need {{roofSurfaceAreaControl.value}} m&#178; of tin
                     </div>
                     <div *ngIf="roofMaterialTypeControl.value=='Beasbeste'">
                         Add calculation for Beasbeste roof material type
@@ -51,7 +51,7 @@
                         Add calculation for Cerpes roof material type
                     </div>
                 </mat-card>
-                <button (click)="calculate()">Calculate</button>
+                <button mat-button color="primary" (click)="calculate()">Calculate</button>
                 <mat-card>
                     <!-- <p> Explanational picture of how rafter length is obtained:</p>
                         <p>run = roof/room width / 2</p>
