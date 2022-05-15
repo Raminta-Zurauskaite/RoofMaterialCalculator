@@ -3,6 +3,39 @@
         <div class="middle-container">
             <div class="container-header">
                 <h1>Roof material calculator</h1>
+                <form [formGroup]="options">
+                    <div>
+                        <label>Roof type:</label>
+                        <mat-radio-group [formControl]="floatLabelControl">
+                            <mat-radio-button value="auto">Shed roof</mat-radio-button>
+                            <mat-radio-button value="always">Open gable roof</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Roof/room length</mat-label>
+                        <input matInput placeholder="10 metres" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Roof/room width</mat-label>
+                        <input matInput placeholder="8 metres">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Roof height</mat-label>
+                        <input matInput placeholder="3 metres">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-select required>
+                            <mat-option value="skarda">Skarda</mat-option>
+                            <mat-option value="beasbeste">Beasbeste stogo danga</mat-option>
+                            <mat-option value="cerpes">Cerpes</mat-option>
+                        </mat-select>
+                        <mat-label>Roof material type</mat-label>
+                    </mat-form-field>
+                </form>
             </div>
         </div>
     </div>
