@@ -15,10 +15,16 @@ export class AppComponent {
   roomLengthControl = new FormControl('10.0');
   roomWidthControl = new FormControl('8.0');
   roofHeightControl = new FormControl('3.0');
-  roofSurfaceAreaControl = new FormControl(Math.round((this.roomLengthControl.value * this.roomWidthControl.value / this.roofHeightControl.value) * 100) / 100);
+  roofSurfaceAreaControl = new FormControl(Math.round((this.roomLengthControl.value * this.roomWidthControl.value / Math.cos(Math.atan(this.roofHeightControl.value / this.roomWidthControl.value))) * 100) / 100);
 
   calculate() {
-    this.roofSurfaceAreaControl.patchValue(Math.round((this.roomLengthControl.value * this.roomWidthControl.value / this.roofHeightControl.value) * 100) / 100);
+    if (this.roofTypeControl.value == 'Shed roof') {
+      this.roofSurfaceAreaControl.patchValue(Math.round((this.roomLengthControl.value * this.roomWidthControl.value / Math.cos(Math.atan(this.roofHeightControl.value / this.roomWidthControl.value))) * 100) / 100);
+    }
+    else if (this.roofTypeControl.value == 'Open gable roof') {
+      this.roofSurfaceAreaControl.patchValue(Math.round((this.roomLengthControl.value * this.roomWidthControl.value / Math.cos(Math.atan(this.roofHeightControl.value / (this.roomWidthControl.value / 2)))) * 100) / 100);
+
+    }
   }
 
   constructor(fb: FormBuilder) {
