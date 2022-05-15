@@ -24,7 +24,7 @@
     align-items: center;
     background-color: rgba(255, 255, 255, 0.9);
     width: 650px;
-    height: 620px;
+    height: 700px;
     border-radius: 6px;
     padding-top: 45px;
 }
@@ -37,22 +37,22 @@ h1 {
     font: 24px 'Segoe UI';
 }
 
-.example-container .mat-form-field+.mat-form-field {
-    margin-left: 8px;
+.middle-container .mat-form-field+.mat-form-field {
+    margin: 8px 8px 8px 8px;
 }
 
-.example-container .mat-form-field {
-    width: 220px;
+.middle-container .mat-form-field {
+    width: 120px;
 }
 
-.example-container form {
-    margin-bottom: 20px;
+.middle-container form {
+    margin: 20px 20px 20px 20px;
 }
 
-.example-container form>* {
+.middle-container form>* {
     margin: 5px 0;
 }
 
-.example-container .mat-radio-button {
+.middle-container .mat-radio-button {
     margin: 0 12px;
 }
