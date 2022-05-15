@@ -16,8 +16,10 @@ export class AppComponent {
   roomWidthControl = new FormControl('8.0');
   roofHeightControl = new FormControl('3.0');
   roofSurfaceAreaControl = new FormControl(Math.round((this.roomLengthControl.value * this.roomWidthControl.value / Math.cos(Math.atan(this.roofHeightControl.value / this.roomWidthControl.value))) * 100) / 100);
+  roofingSheetPriceControl = new FormControl('10.0');
+  roofingSheetOverlapControl = new FormControl('0.0');
 
-  calculate() {
+  calculateRoofSurface() {
     if (this.roofTypeControl.value == 'Shed roof') {
       this.roofSurfaceAreaControl.patchValue(Math.round((this.roomLengthControl.value * this.roomWidthControl.value / Math.cos(Math.atan(this.roofHeightControl.value / this.roomWidthControl.value))) * 100) / 100);
     }
@@ -35,6 +37,8 @@ export class AppComponent {
       roomWidth: this.roomWidthControl,
       roofHeight: this.roofHeightControl,
       roofSurfaceArea: this.roofSurfaceAreaControl,
+      roofingSheetPrice: this.roofingSheetPriceControl,
+      roofingSheetOverlap: this.roofingSheetOverlapControl,
     });
   }
 }

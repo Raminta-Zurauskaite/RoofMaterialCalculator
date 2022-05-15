@@ -30,19 +30,41 @@
 
                 <mat-form-field appearance="fill">
                     <mat-select [formControl]="roofMaterialTypeControl">
-                        <mat-option value="Roof tin">Roof tin</mat-option>
+                        <mat-option value="Roof tin">Roofing sheet</mat-option>
                         <mat-option value="Beasbeste">Beasbeste stogo danga</mat-option>
                         <mat-option value="Cerpes">Cerpes</mat-option>
                     </mat-select>
                     <mat-label>Roof material type</mat-label>
                 </mat-form-field>
                 <mat-card>Roof surface area: {{roofSurfaceAreaControl.value}} m&#178;</mat-card>
+                <button mat-button color="primary" (click)="calculateRoofSurface()">Calculate roof surface</button>
                 <mat-card>
                     <div *ngIf="roofMaterialTypeControl.value==''">
                         Select roof material type
                     </div>
                     <div *ngIf="roofMaterialTypeControl.value=='Roof tin'">
-                        You will need {{roofSurfaceAreaControl.value}} m&#178; of tin
+                        <mat-form-field appearance="fill">
+                            <mat-label>Roofing sheet price</mat-label>
+                            <input type="text" matInput placeholder="10 euros" [formControl]="roofingSheetPriceControl"
+                                required>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Roofing sheet overlap (%)</mat-label>
+                            <input type="text" matInput placeholder="5%" [formControl]="roofingSheetOverlapControl"
+                                required>
+                        </mat-form-field>
+                        <div *ngIf="roofingSheetOverlapControl.value=='0.0'">
+                            You will need {{roofSurfaceAreaControl.value | number : '1.0-2'}} m&#178; of roofing sheet
+                            totaling to
+                            {{roofSurfaceAreaControl.value * roofingSheetPriceControl.value | number : '1.0-2' }} euros
+                        </div>
+                        <div *ngIf="roofingSheetOverlapControl.value!='0.0'">
+                            You will need {{roofSurfaceAreaControl.value / (100.0 - roofingSheetOverlapControl.value) *
+                            100.0 | number : '1.0-2' }} m&#178; of roofing sheet totaling to
+                            {{(roofSurfaceAreaControl.value / (100.0 -
+                            roofingSheetOverlapControl.value) * 100.0 ) * roofingSheetPriceControl.value | number :
+                            '1.0-2'}} euros
+                        </div>
                     </div>
                     <div *ngIf="roofMaterialTypeControl.value=='Beasbeste'">
                         Add calculation for Beasbeste roof material type
@@ -51,7 +73,6 @@
                         Add calculation for Cerpes roof material type
                     </div>
                 </mat-card>
-                <button mat-button color="primary" (click)="calculate()">Calculate</button>
                 <mat-card>
                     <!-- <p> Explanational picture of how rafter length is obtained:</p>
                         <p>run = roof/room width / 2</p>
