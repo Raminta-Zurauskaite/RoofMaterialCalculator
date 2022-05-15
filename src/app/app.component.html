@@ -28,7 +28,7 @@
                     </mat-form-field>
 
                     <mat-form-field appearance="fill">
-                        <mat-select required [formControl]="roofMaterialTypeControl">
+                        <mat-select [formControl]="roofMaterialTypeControl">
                             <mat-option value="Roof tin">Roof tin</mat-option>
                             <mat-option value="Beasbeste">Beasbeste stogo danga</mat-option>
                             <mat-option value="Cerpes">Cerpes</mat-option>
@@ -50,6 +50,7 @@
                             Add calculation for Cerpes roof material type
                         </div>
                     </mat-card>
+                    <button (click)="calculate()">Calculate</button>
                     <mat-card>
                         <!-- <p> Explanational picture of how rafter length is obtained:</p>
                         <p>run = roof/room width / 2</p>

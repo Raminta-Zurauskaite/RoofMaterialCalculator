@@ -17,6 +17,10 @@ export class AppComponent {
   roofHeightControl = new FormControl('3.0');
   roofSurfaceAreaControl = new FormControl(Math.round((this.roomLengthControl.value * this.roomWidthControl.value / this.roofHeightControl.value) * 100) / 100);
 
+  calculate() {
+    this.roofSurfaceAreaControl.patchValue(Math.round((this.roomLengthControl.value * this.roomWidthControl.value / this.roofHeightControl.value) * 100) / 100);
+  }
+
   constructor(fb: FormBuilder) {
     this.options = fb.group({
       roofType: this.roofTypeControl,
@@ -24,14 +28,7 @@ export class AppComponent {
       roomLength: this.roomLengthControl,
       roomWidth: this.roomWidthControl,
       roofHeight: this.roofHeightControl,
-      roofSurfaceArea: this.roomLengthControl.value * this.roomWidthControl.value / this.roofHeightControl.value,
+      roofSurfaceArea: this.roofSurfaceAreaControl,
     });
   }
-
-  /*  roofTypeTin() {
-     if (this.roofMaterialTypeControl.value == "Roof tin") {
-       return true;
-     }
-     else false;
-   } */
 }
