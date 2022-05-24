@@ -16,13 +16,15 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { LithuanianComponent } from './lithuanian/lithuanian.component';
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LithuanianComponent
   ],
   imports: [
     BrowserModule,

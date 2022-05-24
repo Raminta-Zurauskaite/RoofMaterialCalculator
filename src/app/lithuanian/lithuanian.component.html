@@ -2,67 +2,67 @@
     <div class="container">
         <div class="middle-container">
             <div class="container-header">
-                <h1>Roof material calculator</h1>
+                <h1>Stogo dangos skaičiuoklė</h1>
             </div>
             <form [formGroup]="options">
                 <div>
-                    <label>Roof type:</label>
+                    <label>Stogo tipas:</label>
                     <mat-radio-group [formControl]="roofTypeControl">
-                        <mat-radio-button [checked]="true" value="Shed roof">Shed roof</mat-radio-button>
-                        <mat-radio-button value="Open gable roof">Open gable roof</mat-radio-button>
+                        <mat-radio-button [checked]="true" value="Shed roof">Vienšlaitis</mat-radio-button>
+                        <mat-radio-button value="Open gable roof">Dvišlaitis</mat-radio-button>
                     </mat-radio-group>
                 </div>
 
                 <mat-form-field appearance="fill">
-                    <mat-label>Roof/room length</mat-label>
-                    <input type="text" [formControl]="roomLengthControl" matInput placeholder="10 metres" required>
+                    <mat-label>Kambario/stogo ilgis</mat-label>
+                    <input type="text" [formControl]="roomLengthControl" matInput placeholder="10 metrai" required>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
-                    <mat-label>Roof/room width</mat-label>
-                    <input type="text" matInput placeholder="8 metres" [formControl]="roomWidthControl" required>
+                    <mat-label>Kambario/stogo plotis</mat-label>
+                    <input type="text" matInput placeholder="8 metrai" [formControl]="roomWidthControl" required>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
-                    <mat-label>Roof height</mat-label>
-                    <input type="text" matInput placeholder="3 metres" [formControl]="roofHeightControl" required>
+                    <mat-label>Stogo aukštis</mat-label>
+                    <input type="text" matInput placeholder="3 metrai" [formControl]="roofHeightControl" required>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-select [formControl]="roofMaterialTypeControl">
-                        <mat-option value="Roof tin">Roofing sheet</mat-option>
+                        <mat-option value="Roof tin">Skarda</mat-option>
                         <mat-option value="Beasbeste">Beasbeste stogo danga</mat-option>
-                        <mat-option value="Cerpes">Cerpes</mat-option>
+                        <mat-option value="Cerpes">Čerpės</mat-option>
                     </mat-select>
-                    <mat-label>Roof material type</mat-label>
+                    <mat-label>Dangos tipas</mat-label>
                 </mat-form-field>
-                <mat-card>Roof surface area: {{roofSurfaceAreaControl.value}} m&#178;</mat-card>
+                <mat-card>Stogo paviršiaus plotas: {{roofSurfaceAreaControl.value}} m&#178;</mat-card>
                 <mat-card>
                     <div *ngIf="roofMaterialTypeControl.value==''">
-                        Select roof material type
+                        Pasirinkite stogo dangos tipą
                     </div>
                     <div *ngIf="roofMaterialTypeControl.value=='Roof tin'">
                         <mat-form-field appearance="fill">
-                            <mat-label>Roofing sheet price</mat-label>
-                            <input type="text" matInput placeholder="10 euros" [formControl]="roofingSheetPriceControl"
+                            <mat-label>Skardos kaina (m&#178;)</mat-label>
+                            <input type="text" matInput placeholder="10 eurai" [formControl]="roofingSheetPriceControl"
                                 required>
                         </mat-form-field>
                         <mat-form-field appearance="fill">
-                            <mat-label>Roofing sheet overlap (%)</mat-label>
+                            <mat-label>Skardos persidengimas (%)</mat-label>
                             <input type="text" matInput placeholder="5%" [formControl]="roofingSheetOverlapControl"
                                 required>
                         </mat-form-field>
                         <div *ngIf="roofingSheetOverlapControl.value=='0.0'">
-                            You will need {{roofSurfaceAreaControl.value | number : '1.0-2'}} m&#178; of roofing sheet
-                            totaling to
-                            {{roofSurfaceAreaControl.value * roofingSheetPriceControl.value | number : '1.0-2' }} euros
+                            Jums reikės {{roofSurfaceAreaControl.value | number : '1.0-2'}} m&#178; skardos ir iš viso
+                            kainuos
+                            {{roofSurfaceAreaControl.value * roofingSheetPriceControl.value | number : '1.0-2' }} eurus
                         </div>
                         <div *ngIf="roofingSheetOverlapControl.value!='0.0'">
-                            You will need {{roofSurfaceAreaControl.value / (100.0 - roofingSheetOverlapControl.value) *
-                            100.0 | number : '1.0-2' }} m&#178; of roofing sheet totaling to
+                            Jums reikės {{roofSurfaceAreaControl.value / (100.0 - roofingSheetOverlapControl.value) *
+                            100.0 | number : '1.0-2' }} m&#178; skardos ir iš viso kainuos
                             {{(roofSurfaceAreaControl.value / (100.0 -
                             roofingSheetOverlapControl.value) * 100.0 ) * roofingSheetPriceControl.value | number :
-                            '1.0-2'}} euros
+                            '1.0-2'}} eurus
                         </div>
                     </div>
                     <div *ngIf="roofMaterialTypeControl.value=='Beasbeste'">
@@ -72,7 +72,7 @@
                         Add calculation for Cerpes roof material type
                     </div>
                 </mat-card>
-                <button mat-button color="primary" (click)="calculateRoofSurface()">Calculate</button>
+                <button mat-button color="primary" (click)="calculateRoofSurface()">Skaičiuoti</button>
                 <mat-card>
                     <!-- <p> Explanational picture of how rafter length is obtained:</p>
                         <p>run = roof/room width / 2</p>

@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-lithuanian',
+  templateUrl: './lithuanian.component.html',
+  styleUrls: ['./lithuanian.component.css']
 })
-export class AppComponent {
+export class LithuanianComponent implements OnInit {
+
   title = 'roof-material-calculator';
   options: FormGroup;
   roofTypeControl = new FormControl('Shed roof');
@@ -40,4 +41,8 @@ export class AppComponent {
       roofingSheetOverlap: this.roofingSheetOverlapControl,
     });
   }
+
+  ngOnInit(): void {
+  }
+
 }
